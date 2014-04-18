@@ -17,7 +17,7 @@ function sendFile(response, filePath, fileContents) {
 
 function serveStatic(response, cache, absPath) {
   if(cache[absPath]) {
-    sendFile(response, absPath, cache[absPath]);
+    sendFile(response, absPath, cache[absPath]);cx
   } else {
     fs.exists(absPath, function(exists) {
       if (exists) {
@@ -52,3 +52,7 @@ var server = http.createServer(function(request, response) {
 server.listen(2999, function() {
   console.log("Server listening on port 2999");
 })
+
+var chatServer = require('./lib/chat_server');
+chatServer.listen(server);
+
