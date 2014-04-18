@@ -17,11 +17,10 @@ function sendFile(response, filePath, fileContents) {
 
 function serveStatic(response, cache, absPath) {
   if(cache[absPath]) {
-    sendFile(response, absPath, cache[absPath]);cx
+    sendFile(response, absPath, cache[absPath]);
   } else {
     fs.exists(absPath, function(exists) {
       if (exists) {
-        console.log('yes');
         fs.readFile(absPath, function(err, data) {
           if (err) {
             send404(response);
